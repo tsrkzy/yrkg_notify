@@ -34,11 +34,7 @@ do
 
   # 行数が変わってたら
   if [ "${last}" != "${current}" ];
-  then
-    # nowdate=`date '+%Y/%m/%d'`
-    # nowtime=`date '+%H:%M:%S'`
-    # echo "no:${no}\tdate:${nowdate}\ttime:${nowtime}\tfile:${1}"
-   
+  then 
     cnt_diff=`expr ${current} - ${last}`
     txt_diff=`./nkf32.exe -w  ${FILE_PATH} | tail --lines=${cnt_diff}`
     echo "${no}| cnt_diff:"${cnt_diff}", txt_diff:"${txt_diff}
@@ -46,7 +42,6 @@ do
     pattern='ゆりかご'
     if [ "`./nkf32.exe -w  ${FILE_PATH} | tail --lines=${cnt_diff} | grep ${pattern}`" ];
     then
-      # echo './yukarisan.bat'
       ./yukarisan.bat &
     fi
 
